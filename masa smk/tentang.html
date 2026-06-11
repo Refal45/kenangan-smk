@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Tentang SMK Kesuma Bangsa 2 Depok - Sejarah, Visi Misi, Program Keahlian, dan Kata-Kata Kenangan Perpisahan Angkatan 2026." />
+    <title>Kenangan SMK | Tentang - SMK Kesuma Bangsa 2 Depok</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: #fef9f0;
+        color: #2d2a24;
+        overflow-x: hidden;
+        transition: all 0.3s ease;
+      }
+
+      body.sidebar-open {
+        overflow: hidden;
+      }
+
+      .header {
+        background: #fffaf3;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        backdrop-filter: blur(2px);
+        border-bottom: 1px solid #ffe0b5;
+      }
+
+      .nav-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-img {
+        height: 45px;
+        width: auto;
+        object-fit: contain;
+      }
+      .logo-text h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #b5651e, #7a3e0c);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        letter-spacing: -0.5px;
+        margin: 0;
+        line-height: 1.2;
+      }
+      .logo-text p {
+        font-size: 0.7rem;
+        color: #a5713c;
+        letter-spacing: 1px;
+        margin: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.2rem;
+        list-style: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        font-weight: 500;
+        color: #4a3b2c;
+        transition: 0.3s;
+        font-size: 1rem;
+        position: relative;
+        padding: 0.5rem 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .nav-links a i {
+        font-size: 1rem;
+        color: #bc7a3a;
+      }
+      .nav-links a:hover {
+        color: #c17b3a;
+      }
+      .nav-links a.active {
+        color: #c17b3a;
+        font-weight: 600;
+      }
+      .nav-links a.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2.5px;
+        background: #c17b3a;
+        border-radius: 4px;
+      }
+
+      .burger-menu {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #7a4a2a;
+        background: none;
+        border: none;
+        transition: 0.2s;
+      }
+      .burger-menu:hover {
+        color: #b5621a;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100%;
+        background: #fff9f0;
+        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid #f5dfc0;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+        border-bottom: 1px solid #f0dbb8;
+        padding-bottom: 1rem;
+      }
+      .sidebar-header h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.7rem;
+        color: #9b5a2a;
+      }
+      .close-sidebar {
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #7a583a;
+        transition: 0.2s;
+      }
+      .close-sidebar:hover {
+        color: #c0392b;
+        transform: scale(1.05);
+      }
+      .sidebar-nav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+      }
+      .sidebar-nav li a {
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #3a2c1e;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0.6rem 0.8rem;
+        border-radius: 12px;
+        transition: 0.2s;
+      }
+      .sidebar-nav li a i {
+        width: 28px;
+        font-size: 1.2rem;
+        color: #bc7a3a;
+      }
+      .sidebar-nav li a.active {
+        background: #faeedf;
+        color: #bc6f2c;
+        font-weight: 600;
+      }
+      .sidebar-nav li a:hover {
+        background: #f8e7d4;
+        padding-left: 1rem;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(2px);
+        z-index: 999;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.25s;
+      }
+      .overlay.active {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .main-content {
+        max-width: 1280px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+      }
+      .hero {
+        background: linear-gradient(120deg, #fff1e0, #ffe7d4);
+        border-radius: 40px;
+        padding: 3rem 2rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.03);
+        border: 1px solid #ffe2c1;
+      }
+      .hero h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        color: #865d36;
+      }
+      .hero p {
+        max-width: 700px;
+        margin: 1rem auto;
+        color: #5e4030;
+      }
+      .about-section {
+        background: white;
+        border-radius: 32px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+        border: 1px solid #f8e2ca;
+      }
+      .about-section h3 {
+        font-size: 1.8rem;
+        color: #b5651e;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .about-section p {
+        margin-bottom: 1rem;
+        line-height: 1.7;
+        color: #3d3228;
+      }
+      .visi-misi {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+      .card-visi, .card-misi {
+        background: #fef7ef;
+        padding: 1.8rem;
+        border-radius: 28px;
+        border-left: 6px solid #d48c48;
+      }
+      .card-visi h4, .card-misi h4 {
+        font-size: 1.5rem;
+        color: #9b5a2a;
+        margin-bottom: 1rem;
+      }
+      .card-misi ul, .jurusan-list {
+        padding-left: 1.2rem;
+      }
+      .card-misi li, .jurusan-list li {
+        margin: 0.8rem 0;
+        line-height: 1.5;
+      }
+      .jurusan-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+      .jurusan-card {
+        background: #fffaf2;
+        padding: 1.3rem;
+        border-radius: 24px;
+        border: 1px solid #f0dbb8;
+        transition: 0.2s;
+      }
+      .jurusan-card i {
+        font-size: 2rem;
+        color: #d48c48;
+        margin-bottom: 0.5rem;
+      }
+      .jurusan-card h4 {
+        font-size: 1.3rem;
+        color: #b5651e;
+        margin: 0.5rem 0;
+      }
+      .motto {
+        background: #faeedf;
+        border-radius: 36px;
+        padding: 1.8rem;
+        text-align: center;
+        margin: 2rem 0;
+      }
+      .motto i {
+        font-size: 2rem;
+        color: #b96f2e;
+        margin-bottom: 0.5rem;
+      }
+      .motto p {
+        font-style: italic;
+        font-size: 1.1rem;
+      }
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .burger-menu {
+          display: block;
+        }
+        .hero h2 {
+          font-size: 1.9rem;
+        }
+        .main-content {
+          padding: 0 1.2rem;
+        }
+        .header {
+          padding: 0.8rem 1.2rem;
+        }
+        .logo-img {
+          height: 35px;
+        }
+        .logo-text h1 {
+          font-size: 1.3rem;
+        }
+        .visi-misi {
+          grid-template-columns: 1fr;
+        }
+        .jurusan-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      /* Footer with map */
+      .footer {
+        background: #2b241c;
+        color: #e7cfb5;
+        text-align: center;
+        padding: 2rem;
+        margin-top: 3rem;
+        font-size: 0.85rem;
+      }
+      .footer-container {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+      .map-container {
+        margin: 1.5rem 0;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        background: #eae2d7;
+        min-height: 280px;
+      }
+      .map-container iframe {
+        width: 100%;
+        height: 280px;
+        border: 0;
+        display: block;
+      }
+      .address {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        color: #f0dbb8;
+      }
+      .address i {
+        margin-right: 6px;
+        color: #d48c48;
+      }
+      .copyright {
+        margin-top: 1.5rem;
+        border-top: 1px solid #4a3b2c;
+        padding-top: 1.5rem;
+        font-size: 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-graduation-cap"></i> Kenangan</h3>
+        <button class="close-sidebar" id="closeSidebarBtn"><i class="fas fa-times"></i></button>
+      </div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="index.html" id="sidebarBeranda"><i class="fas fa-home"></i> Beranda</a>
+        </li>
+        <li>
+          <a href="tentang.html" id="sidebarTentang"><i class="fas fa-book-open"></i> Tentang</a>
+        </li>
+        <li>
+          <a href="galeri.html" id="sidebarGaleri"><i class="fas fa-images"></i> Galeri</a>
+        </li>
+        <li>
+          <a href="kontak.html" id="sidebarKontak"><i class="fas fa-envelope"></i> Kontak</a>
+        </li>
+      </ul>
+      <div style="margin-top: auto; padding-top: 2rem; font-size: 0.7rem; color: #ab8a66; text-align: center"><i class="fas fa-camera-retro"></i> SMK Kenangan 2025</div>
+    </div>
+
+    <header class="header">
+      <div class="nav-container">
+        <div class="logo">
+          <img class="logo-img" src="https://smk-kesumabangsa2.sch.id/wp-content/uploads/erf_uploads/2020/05/LOGO-SMK-2-copy-1-600x600.jpg" alt="Logo SMK" />
+          <img class="logo-img" src="https://kuba2.net/apkguruku/wp-content/uploads/2022/07/logo-rpl.jpg" alt="Logo RPL" />
+          <div class="logo-text">
+            <h1>Kenangan SMK</h1>
+            <p>| cerita & inspirasi |</p>
+          </div>
+        </div>
+        <ul class="nav-links" id="desktopNav">
+          <li>
+            <a href="index.html" id="navBeranda"><i class="fas fa-home"></i> Beranda</a>
+          </li>
+          <li>
+            <a href="tentang.html" id="navTentang"><i class="fas fa-book-open"></i> Tentang</a>
+          </li>
+          <li>
+            <a href="galeri.html" id="navGaleri"><i class="fas fa-images"></i> Galeri</a>
+          </li>
+          <li>
+            <a href="kontak.html" id="navKontak"><i class="fas fa-envelope"></i> Kontak</a>
+          </li>
+        </ul>
+        <button class="burger-menu" id="burgerBtn"><i class="fas fa-bars"></i></button>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="hero">
+        <h2><i class="fas fa-school"></i> Tentang SMK Kesuma Bangsa 2 Depok</h2>
+        <p>Kata-Kata Kenangan Perpisahan, Sejarah, Visi Misi, dan Program Keahlian yang membekas di hati.</p>
+      </div>
+
+      <!-- Kata-Kata Kenangan Perpisahan -->
+      <div class="about-section">
+        <h3><i class="fas fa-ribbon"></i> 🎓 Kata-Kata Kenangan Perpisahan</h3>
+        <p><strong>"Tak terasa tiga tahun telah kita lalui bersama di SMK Kesuma Bangsa 2 Depok. Dari hari pertama yang penuh rasa penasaran hingga hari perpisahan yang dipenuhi kenangan, kita telah tumbuh menjadi pribadi yang lebih kuat, mandiri, dan siap menghadapi masa depan. Setiap tawa di sela pelajaran, perjuangan menyelesaikan tugas, praktik di jurusan masing-masing, hingga kebersamaan dalam berbagai kegiatan sekolah akan selalu menjadi bagian indah dalam perjalanan hidup kami."</strong></p>
+        <p>Terima kasih kepada seluruh bapak dan ibu guru yang telah membimbing dengan penuh kesabaran, memberikan ilmu, motivasi, serta menjadi inspirasi bagi kami. Terima kasih juga kepada sahabat-sahabat terbaik yang telah mengisi hari-hari di sekolah dengan cerita yang tak terlupakan.</p>
+        <p>Hari ini mungkin menjadi akhir dari kebersamaan kita di bangku sekolah, namun bukan akhir dari persahabatan dan impian yang telah kita bangun bersama. Semoga setiap langkah yang kita tempuh membawa kesuksesan dan kebahagiaan. Sampai bertemu kembali di puncak cita-cita.</p>
+        <p><em>"Sekali keluarga Kesuma Bangsa, tetap keluarga selamanya."</em></p>
+      </div>
+
+      <!-- Sejarah Singkat (1998) -->
+      <div class="about-section">
+        <h3><i class="fas fa-history"></i> 🏫 Sejarah Singkat SMK Kesuma Bangsa 2 Depok</h3>
+        <p>SMK Kesuma Bangsa 2 Depok didirikan pada bulan <strong>Oktober 1998</strong> dengan nama SMEA/SMK Kesuma Bangsa 2. Berdirinya sekolah ini dilatarbelakangi oleh tingginya minat masyarakat Kota Depok, khususnya Kecamatan Beji, terhadap pendidikan kejuruan yang mampu menghasilkan lulusan berkualitas dan siap kerja.</p>
+        <p>Pada awal berdirinya, sekolah membuka program keahlian Sekretaris dan Perdagangan. Seiring perkembangan zaman dan kebutuhan dunia industri, SMK Kesuma Bangsa 2 Depok terus berinovasi dengan membuka program keahlian baru, termasuk <strong>Rekayasa Perangkat Lunak (RPL) pada tahun 2006</strong>. Hingga saat ini, sekolah terus berkomitmen mencetak generasi yang unggul, profesional, dan berdaya saing tinggi.</p>
+      </div>
+
+      <!-- Visi & Misi -->
+      <div class="visi-misi">
+        <div class="card-visi">
+          <h4><i class="fas fa-eye"></i> 🌟 Visi</h4>
+          <p>"Terwujudnya peserta didik yang beriman dan bertawakal, berprestasi, terampil, dan profesional."</p>
+        </div>
+        <div class="card-misi">
+          <h4><i class="fas fa-bullseye"></i> 🎯 Misi</h4>
+          <ul>
+            <li>Meningkatkan potensi insan yang berakhlak mulia.</li>
+            <li>Menggali dan mengembangkan potensi peserta didik.</li>
+            <li>Menumbuhkan aktivitas serta kreativitas peserta didik.</li>
+            <li>Menyiapkan sumber daya manusia yang potensial, terampil, dan profesional.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Program Keahlian (Jurusan) -->
+      <div class="about-section">
+        <h3><i class="fas fa-laptop-code"></i> 💼 Program Keahlian (Jurusan)</h3>
+        <p>SMK Kesuma Bangsa 2 Depok memiliki beberapa program keahlian unggulan, yaitu:</p>
+        <div class="jurusan-grid">
+          <div class="jurusan-card">
+            <i class="fas fa-code"></i>
+            <h4>💻 Rekayasa Perangkat Lunak (RPL)</h4>
+            <p>Mempelajari pemrograman komputer, pengembangan aplikasi berbasis web dan mobile, basis data, serta teknologi informasi untuk menciptakan solusi digital yang inovatif.</p>
+          </div>
+          <div class="jurusan-card">
+            <i class="fas fa-play-circle"></i>
+            <h4>🖥️ Multimedia (MM)</h4>
+            <p>Mempelajari desain grafis, editing foto dan video, animasi, fotografi, serta produksi media digital kreatif.</p>
+          </div>
+          <div class="jurusan-card">
+            <i class="fas fa-chart-line"></i>
+            <h4>📊 Bisnis Daring dan Pemasaran (BDP)</h4>
+            <p>Membekali siswa dengan keterampilan pemasaran konvensional maupun digital, kewirausahaan, serta strategi bisnis berbasis teknologi.</p>
+          </div>
+          <div class="jurusan-card">
+            <i class="fas fa-building"></i>
+            <h4>📁 Otomatisasi dan Tata Kelola Perkantoran (OTKP)</h4>
+            <p>Mempelajari administrasi perkantoran modern, pengelolaan dokumen, pelayanan prima, serta penggunaan teknologi dalam kegiatan perkantoran.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Motto Perpisahan -->
+      <div class="motto">
+        <i class="fas fa-quote-left"></i>
+        <p><strong>✨ Motto Perpisahan</strong></p>
+        <p>"Berpisah bukan berarti melupakan, melainkan menyimpan setiap kenangan sebagai bekal untuk melangkah menuju masa depan."</p>
+        <p>"Berbeda jurusan, berbeda tujuan, namun kita dipersatukan oleh kenangan indah di SMK Kesuma Bangsa 2 Depok."</p>
+        <p>"Teruslah berkarya, raih cita-cita, dan buktikan bahwa lulusan SMK Kesuma Bangsa 2 mampu bersinar di mana pun berada."</p>
+        <i class="fas fa-heart" style="color: #d48c48; margin-top: 0.5rem;"></i>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="address">
+          <i class="fas fa-map-marker-alt"></i> <strong>SMK Kesuma Bangsa 2 Depok</strong><br />
+          Jalan Tanah Baru, Beji, Depok, Jawa Barat 16426<br />
+          Koordinat: -6.377521, 106.80816
+        </div>
+        <div class="map-container">
+          <!-- Google Maps embed dengan marker tepat di koordinat SMK Kesuma Bangsa 2 Depok -->
+          <iframe
+            src="https://maps.google.com/maps?q=-6.377521,106.80816(SMK+Kesuma+Bangsa+2+Depok)&z=18&output=embed"
+            title="Peta Lokasi SMK Kesuma Bangsa 2 Depok - Beji, Jawa Barat"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            style="border:0;"
+            aria-label="Peta interaktif menampilkan SMK Kesuma Bangsa 2 Depok di Jalan Tanah Baru, Beji, Depok"
+          ></iframe>
+        </div>
+        <div class="copyright">
+          <p><i class="far fa-copyright"></i> <span id="currentYear"></span> Kenangan SMK | Bangun nostalgia generasi masa depan</p>
+          <p style="margin-top: 6px">#SMKKesumaBangsa2 #KenanganAbadi #BejiDepok</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Tahun dinamis pada footer
+      document.getElementById('currentYear').innerText = new Date().getFullYear();
+
+      // ----- SIDEBAR TOGGLE & OVERLAY -----
+      const burger = document.getElementById('burgerBtn');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
+      const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+      const body = document.body;
+
+      function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        body.classList.add('sidebar-open');
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        body.classList.remove('sidebar-open');
+      }
+
+      if (burger) burger.addEventListener('click', openSidebar);
+      if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
+      if (overlay) overlay.addEventListener('click', closeSidebar);
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 768) closeSidebar();
+      });
+
+      // ----- Active Navigation (highlight menu sesuai halaman) -----
+      function setActiveNav() {
+        const currentPath = window.location.pathname;
+        let currentFile = currentPath.split('/').pop();
+        if (currentFile === '' || currentFile === 'tentang.html') {
+          currentFile = 'tentang.html';
+        }
+        const navMap = {
+          'index.html': { desktop: 'navBeranda', sidebar: 'sidebarBeranda' },
+          'tentang.html': { desktop: 'navTentang', sidebar: 'sidebarTentang' },
+          'galeri.html': { desktop: 'navGaleri', sidebar: 'sidebarGaleri' },
+          'kontak.html': { desktop: 'navKontak', sidebar: 'sidebarKontak' },
+        };
+        document.querySelectorAll('.nav-links a, .sidebar-nav a').forEach((link) => link.classList.remove('active'));
+        if (navMap[currentFile]) {
+          const desktopLink = document.getElementById(navMap[currentFile].desktop);
+          const sidebarLink = document.getElementById(navMap[currentFile].sidebar);
+          if (desktopLink) desktopLink.classList.add('active');
+          if (sidebarLink) sidebarLink.classList.add('active');
+        } else {
+          const defaultDesktop = document.getElementById('navTentang');
+          const defaultSidebar = document.getElementById('sidebarTentang');
+          if (defaultDesktop) defaultDesktop.classList.add('active');
+          if (defaultSidebar) defaultSidebar.classList.add('active');
+        }
+      }
+
+      // Tutup sidebar ketika link di sidebar diklik
+      document.querySelectorAll('.sidebar-nav a').forEach((anchor) => anchor.addEventListener('click', closeSidebar));
+
+      window.addEventListener('DOMContentLoaded', setActiveNav);
+    </script>
+  </body>
+</html>
