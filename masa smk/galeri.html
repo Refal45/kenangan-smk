@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="description" content="Galeri Foto Kenangan SMK Kesuma Bangsa 2 Depok - 35 momen terbaik angkatan 2026 dengan musik latar kenangan." />
-  <title>Kenangan SMK | Galeri Foto 35 Momen + Musik</title>
+  <meta name="description" content="Galeri Foto Kenangan SMK Kesuma Bangsa 2 Depok - 35 momen terbaik angkatan 2026 dengan musik latar otomatis." />
+  <title>Kenangan SMK | Galeri Foto + Musik Auto Play</title>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <!-- Google Fonts -->
@@ -249,11 +249,11 @@
       color: #5e4030;
     }
 
-    /* MUSIC PLAYER CARD */
+    /* MUSIC PLAYER CARD dengan autoplay handling */
     .music-player-card {
-      max-width: 500px;
+      max-width: 550px;
       margin: 1rem auto 0.5rem;
-      background: rgba(255, 245, 230, 0.9);
+      background: rgba(255, 245, 230, 0.95);
       backdrop-filter: blur(4px);
       border-radius: 60px;
       padding: 0.6rem 1.2rem;
@@ -284,6 +284,16 @@
     }
     audio::-webkit-media-controls-panel {
       background-color: #fff1e2;
+    }
+    .autoplay-hint {
+      font-size: 0.7rem;
+      color: #b87a47;
+      background: #fff0e0;
+      padding: 4px 12px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     /* Galeri Grid: 5 kolom per baris */
@@ -412,7 +422,7 @@
       font-size: 0.75rem;
     }
 
-    /* Responsive: tablet 3 kolom, mobile 2 kolom */
+    /* Responsive */
     @media (max-width: 992px) {
       .gallery-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -473,18 +483,10 @@
     <button class="close-sidebar" id="closeSidebarBtn"><i class="fas fa-times"></i></button>
   </div>
   <ul class="sidebar-nav">
-    <li>
-      <a href="index.html" id="sidebarBeranda"><i class="fas fa-home"></i> Beranda</a>
-    </li>
-    <li>
-      <a href="tentang.html" id="sidebarTentang"><i class="fas fa-book-open"></i> Tentang</a>
-    </li>
-    <li>
-      <a href="galeri.html" id="sidebarGaleri"><i class="fas fa-images"></i> Galeri</a>
-    </li>
-    <li>
-      <a href="kontak.html" id="sidebarKontak"><i class="fas fa-envelope"></i> Kontak</a>
-    </li>
+    <li><a href="index.html" id="sidebarBeranda"><i class="fas fa-home"></i> Beranda</a></li>
+    <li><a href="tentang.html" id="sidebarTentang"><i class="fas fa-book-open"></i> Tentang</a></li>
+    <li><a href="galeri.html" id="sidebarGaleri"><i class="fas fa-images"></i> Galeri</a></li>
+    <li><a href="kontak.html" id="sidebarKontak"><i class="fas fa-envelope"></i> Kontak</a></li>
   </ul>
   <div style="margin-top: auto; padding-top: 2rem; font-size: 0.7rem; color: #ab8a66; text-align: center"><i class="fas fa-camera-retro"></i> SMK Kenangan 2025</div>
 </div>
@@ -500,18 +502,10 @@
       </div>
     </div>
     <ul class="nav-links" id="desktopNav">
-      <li>
-        <a href="index.html" id="navBeranda"><i class="fas fa-home"></i> Beranda</a>
-      </li>
-      <li>
-        <a href="tentang.html" id="navTentang"><i class="fas fa-book-open"></i> Tentang</a>
-      </li>
-      <li>
-        <a href="galeri.html" id="navGaleri"><i class="fas fa-images"></i> Galeri</a>
-      </li>
-      <li>
-        <a href="kontak.html" id="navKontak"><i class="fas fa-envelope"></i> Kontak</a>
-      </li>
+      <li><a href="index.html" id="navBeranda"><i class="fas fa-home"></i> Beranda</a></li>
+      <li><a href="tentang.html" id="navTentang"><i class="fas fa-book-open"></i> Tentang</a></li>
+      <li><a href="galeri.html" id="navGaleri"><i class="fas fa-images"></i> Galeri</a></li>
+      <li><a href="kontak.html" id="navKontak"><i class="fas fa-envelope"></i> Kontak</a></li>
     </ul>
     <button class="burger-menu" id="burgerBtn"><i class="fas fa-bars"></i></button>
   </div>
@@ -521,18 +515,19 @@
   <div class="hero">
     <h2><i class="fas fa-camera"></i> Galeri Kenangan</h2>
     <p>35 momen terindah selama di SMK Kesuma Bangsa 2 Depok.</p>
-    <!-- MUSIC PLAYER (lagu1.mp3) DITAMBAHKAN DI SINI -->
-    <div class="music-player-card">
+    
+    <!-- MUSIC PLAYER dengan AUTOPLAY dan loop, ditambah handler agar berjalan di Chrome -->
+    <div class="music-player-card" id="musicPlayerCard">
       <div class="music-info">
         <i class="fas fa-headphones"></i>
-        <span><strong>🎵 Lagu Kenangan</strong> — Nostalgia</span>
+        <span><strong>🎵 Lagu Kenangan</strong> — Nostalgia Abadi</span>
       </div>
-      <audio controls preload="metadata" loop>
+      <audio id="bgAudio" loop preload="auto">
         <source src="lagu1.mp3" type="audio/mpeg">
-        Browser Anda tidak mendukung pemutar audio. <a href="lagu1.mp3">Download lagu</a>
+        Browser tidak support audio.
       </audio>
-      <div class="music-info" style="font-size:0.7rem; gap:4px;">
-        <i class="fas fa-music"></i> <span>putar untuk bernostalgia</span>
+      <div class="autoplay-hint" id="autoplayHint">
+        <i class="fas fa-music"></i> <span id="hintText">Memulai musik otomatis...</span>
       </div>
     </div>
   </div>
@@ -548,15 +543,10 @@
       Koordinat: -6.377521, 106.80816
     </div>
     <div class="map-container">
-      <iframe
-        src="https://maps.google.com/maps?q=-6.377521,106.80816(SMK+Kesuma+Bangsa+2+Depok)&z=18&output=embed"
-        title="Peta Lokasi SMK Kesuma Bangsa 2 Depok - Beji, Jawa Barat"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        style="border: 0"
-        aria-label="Peta interaktif menampilkan SMK Kesuma Bangsa 2 Depok di Jalan Tanah Baru, Beji, Depok"
-      ></iframe>
+      <iframe src="https://maps.google.com/maps?q=-6.377521,106.80816(SMK+Kesuma+Bangsa+2+Depok)&z=18&output=embed"
+        title="Peta Lokasi SMK Kesuma Bangsa 2 Depok - Beji, Jawa Barat" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" style="border: 0"
+        aria-label="Peta interaktif SMK Kesuma Bangsa 2 Depok"></iframe>
     </div>
     <div class="copyright">
       <p><i class="far fa-copyright"></i> <span id="currentYear"></span> Kenangan SMK | Bangun nostalgia generasi masa depan</p>
@@ -572,7 +562,7 @@
 </div>
 
 <script>
-  // Tahun dinamis pada footer
+  // Tahun dinamis
   document.getElementById('currentYear').innerText = new Date().getFullYear();
 
   // ----- SIDEBAR TOGGLE & OVERLAY -----
@@ -582,145 +572,166 @@
   const closeSidebarBtn = document.getElementById('closeSidebarBtn');
   const body = document.body;
 
-  function openSidebar() {
-    sidebar.classList.add('open');
-    overlay.classList.add('active');
-    body.classList.add('sidebar-open');
-  }
-
-  function closeSidebar() {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('active');
-    body.classList.remove('sidebar-open');
-  }
-
+  function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('active'); body.classList.add('sidebar-open'); }
+  function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('active'); body.classList.remove('sidebar-open'); }
   if (burger) burger.addEventListener('click', openSidebar);
   if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
   if (overlay) overlay.addEventListener('click', closeSidebar);
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 768) closeSidebar();
-  });
+  window.addEventListener('resize', () => { if (window.innerWidth > 768) closeSidebar(); });
 
-  // ----- Active Navigation (menandai halaman galeri) -----
+  // ----- Active navigation (Galeri aktif) -----
   function setActiveNav() {
-    const currentPath = window.location.pathname;
-    let currentFile = currentPath.split('/').pop();
-    if (currentFile === '' || currentFile === 'galeri.html') {
-      currentFile = 'galeri.html';
-    }
-    const navMap = {
+    const path = window.location.pathname;
+    let current = path.split('/').pop();
+    if (current === '' || current === 'galeri.html') current = 'galeri.html';
+    const map = {
       'index.html': { desktop: 'navBeranda', sidebar: 'sidebarBeranda' },
       'tentang.html': { desktop: 'navTentang', sidebar: 'sidebarTentang' },
       'galeri.html': { desktop: 'navGaleri', sidebar: 'sidebarGaleri' },
       'kontak.html': { desktop: 'navKontak', sidebar: 'sidebarKontak' },
     };
-    document.querySelectorAll('.nav-links a, .sidebar-nav a').forEach((link) => link.classList.remove('active'));
-    if (navMap[currentFile]) {
-      const desktopLink = document.getElementById(navMap[currentFile].desktop);
-      const sidebarLink = document.getElementById(navMap[currentFile].sidebar);
-      if (desktopLink) desktopLink.classList.add('active');
-      if (sidebarLink) sidebarLink.classList.add('active');
+    document.querySelectorAll('.nav-links a, .sidebar-nav a').forEach(link => link.classList.remove('active'));
+    if (map[current]) {
+      const d = document.getElementById(map[current].desktop);
+      const s = document.getElementById(map[current].sidebar);
+      if (d) d.classList.add('active');
+      if (s) s.classList.add('active');
     } else {
-      const defaultDesktop = document.getElementById('navGaleri');
-      const defaultSidebar = document.getElementById('sidebarGaleri');
-      if (defaultDesktop) defaultDesktop.classList.add('active');
-      if (defaultSidebar) defaultSidebar.classList.add('active');
+      const def = document.getElementById('navGaleri');
+      if (def) def.classList.add('active');
+      const defSide = document.getElementById('sidebarGaleri');
+      if (defSide) defSide.classList.add('active');
+    }
+  }
+  document.querySelectorAll('.sidebar-nav a').forEach(anchor => anchor.addEventListener('click', closeSidebar));
+  window.addEventListener('DOMContentLoaded', setActiveNav);
+
+  // ========== AUTOPLAY MUSIC (lagu1.mp3) CHROME FRIENDLY ==========
+  const audio = document.getElementById('bgAudio');
+  const hintSpan = document.getElementById('hintText');
+  let autoplayAttempted = false;
+  let playResolved = false;
+
+  function updateHint(text, isSuccess = false) {
+    if (hintSpan) {
+      hintSpan.innerText = text;
+      if (isSuccess) {
+        hintSpan.style.color = '#2c7a47';
+        setTimeout(() => {
+          if (hintSpan.innerText === text) hintSpan.innerText = '🎧 Musik diputar otomatis';
+        }, 2000);
+      } else {
+        hintSpan.style.color = '#b85c1a';
+      }
     }
   }
 
-  document.querySelectorAll('.sidebar-nav a').forEach((anchor) => anchor.addEventListener('click', closeSidebar));
-  window.addEventListener('DOMContentLoaded', setActiveNav);
+  // Fungsi mencoba play audio
+  async function attemptAutoPlay() {
+    if (playResolved) return true;
+    try {
+      await audio.play();
+      playResolved = true;
+      updateHint('✅ Musik berjalan otomatis', true);
+      return true;
+    } catch (err) {
+      console.warn('Autoplay ditolak browser:', err);
+      updateHint('⚡ Klik di mana saja untuk memutar lagu', false);
+      return false;
+    }
+  }
 
-  // ----- GENERATE 35 FOTO (foto1.jpeg - foto35.jpeg) dengan placeholder fallback -----
+  // Setel volume normal, matikan mute
+  audio.volume = 0.8;
+  audio.muted = false;
+
+  // 1. Pasang autoplay segera (coba play)
+  attemptAutoPlay();
+
+  // 2. Jika gagal, pasang listener global satu kali (klik atau sentuh) untuk memutar otomatis setelah interaksi user
+  const startMusicOnInteraction = () => {
+    if (playResolved) return;
+    // coba play lagi
+    audio.play().then(() => {
+      playResolved = true;
+      updateHint('🎵 Musik mulai diputar!', true);
+      // Hapus listener setelah berhasil
+      document.removeEventListener('click', startMusicOnInteraction);
+      document.removeEventListener('touchstart', startMusicOnInteraction);
+      document.removeEventListener('keydown', startMusicOnInteraction);
+    }).catch(e => console.log("Gagal play meski ada interaksi?", e));
+  };
+
+  // jika belum berhasil, pasang berbagai event interaksi pertama
+  if (!playResolved) {
+    const events = ['click', 'touchstart', 'keydown'];
+    events.forEach(ev => {
+      document.addEventListener(ev, startMusicOnInteraction, { once: true });
+    });
+  }
+
+  // Opsional: jika audio error karena file tidak ada
+  audio.addEventListener('error', (e) => {
+    console.error('Audio error: file lagu1.mp3 tidak ditemukan atau format salah');
+    updateHint('⚠️ lagu1.mp3 tidak ditemukan', false);
+  });
+
+  // Memastikan loop berjalan lancar, dan tidak ada mute
+  audio.loop = true;
+
+  // ----- GENERATE 35 FOTO (foto1.jpeg - foto35.jpeg) -----
   const galleryGrid = document.getElementById('galleryGrid');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
-  const closeLightboxBtn = document.getElementById('closeLightboxBtn');
+  const closeLightbox = document.getElementById('closeLightboxBtn');
 
   const totalPhotos = 35;
-  // Captions khusus untuk setiap momen
   const captions = [
-    'Momen kelulusan SMK',
-    'Foto angkatan 26 12 RPL',
-    'Foto angkatan 26 12 RPL',
-    'Fotbar sekelas',
-    'Fotbar kelulusan bersama kaprog',
-    'Bukber',
-    'Foto bareng teman sekelas',
-    'Bukber sekelas',
-    'Holy fest',
-    'Fotbar sekelas di bawah amertha',
-    'Foto di bawah amertha',
-    'Fotbar sekelas',
-    'Fotbar bukber',
-    'Bukber sekelas angkatan 26 12 RPL',
-    'Bukber sekelas 12 RPL 26',
-    'Ramadhan berkumpul bersama',
-    'Malam keakraban',
-    'Bukber penuh cerita tawa',
-    'Sahabat beda jurusan',
-    'Salam perpisahan 2026',
-    'Fotbar sekelas kelulusan',
-    'Holy fest fotbar cewek',
-    'Holy fest spesial',
-    'Fotbar untuk BTS',
-    'MBG pertama',
-    'Lab RPL',
-    'Fotbar jurusan RPL campus day',
-    'Bukber hangat',
-    'Bukber penuh cerita',
-    'Bukber tawa bahagia',
-    'Bukber terakhir',
-    'Bukber mesra',
-    'Bukber sekelas',
-    'Bukber penuh keseruan',
-    'Bukber kenangan abadi'
+    'Momen kelulusan SMK', 'Foto angkatan 26 12 RPL', 'Foto angkatan 26 12 RPL', 'Fotbar sekelas',
+    'Fotbar kelulusan bersama kaprog', 'Bukber', 'Foto bareng teman sekelas', 'Bukber sekelas',
+    'Holy fest', 'Fotbar sekelas di bawah amertha', 'Foto di bawah amertha', 'Fotbar sekelas',
+    'Fotbar bukber', 'Bukber sekelas angkatan 26 12 RPL', 'Bukber sekelas 12 RPL 26',
+    'Ramadhan berkumpul bersama', 'Malam keakraban', 'Bukber penuh cerita tawa', 'Sahabat beda jurusan',
+    'Salam perpisahan 2026', 'Fotbar sekelas kelulusan', 'Holy fest fotbar cewek', 'Holy fest spesial',
+    'Fotbar untuk BTS', 'MBG pertama', 'Lab RPL', 'Fotbar jurusan RPL campus day', 'Bukber hangat',
+    'Bukber penuh cerita', 'Bukber tawa bahagia', 'Bukber terakhir', 'Bukber mesra',
+    'Bukber sekelas', 'Bukber penuh keseruan', 'Bukber kenangan abadi'
   ];
 
-  // Fungsi untuk membuat elemen galeri
   for (let i = 1; i <= totalPhotos; i++) {
     const fileName = `foto${i}.jpeg`;
-    const caption = captions[i - 1] || `Kenangan indah #${i}`;
-
+    const caption = captions[i-1] || `Kenangan indah #${i}`;
     const galleryItem = document.createElement('div');
     galleryItem.className = 'gallery-item';
-    galleryItem.setAttribute('data-img', fileName);
-
     const imgDiv = document.createElement('div');
     imgDiv.className = 'gallery-img';
     const img = document.createElement('img');
     img.src = fileName;
     img.alt = `Kenangan SMK ${i} - ${caption}`;
     img.loading = 'lazy';
-    // Fallback jika gambar gagal dimuat
-    img.onerror = function () {
+    img.onerror = function() {
       if (!this.src.includes('placehold.co')) {
         this.src = `https://placehold.co/600x600/fbe9d2/a5673a?text=Kenangan+${i}&font=poppins`;
       }
     };
     imgDiv.appendChild(img);
-
     const captionDiv = document.createElement('div');
     captionDiv.className = 'gallery-caption';
     captionDiv.innerHTML = `<i class="fas fa-image"></i> ${caption}`;
-
     galleryItem.appendChild(imgDiv);
     galleryItem.appendChild(captionDiv);
-
-    // Event untuk membuka lightbox
     galleryItem.addEventListener('click', (e) => {
       e.stopPropagation();
       lightboxImg.src = img.src;
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
-
     galleryGrid.appendChild(galleryItem);
   }
 
-  // Lightbox close (tombol X & klik overlay)
-  if (closeLightboxBtn) {
-    closeLightboxBtn.addEventListener('click', () => {
+  // Lightbox close events
+  if (closeLightbox) {
+    closeLightbox.addEventListener('click', () => {
       lightbox.classList.remove('active');
       document.body.style.overflow = '';
     });
@@ -739,9 +750,6 @@
       document.body.style.overflow = '';
     }
   });
-
-  // (Opsional) Pesan kecil di konsol bahwa lagu1.mp3 sudah siap dimainkan manual
-  console.log('Galeri 35 foto siap | Musik latar tersedia (lagu1.mp3) - gunakan kontrol play pada pemutar.');
 </script>
 </body>
 </html>
