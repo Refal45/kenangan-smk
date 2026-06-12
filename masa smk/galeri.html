@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="Galeri Foto Kenangan SMK Kesuma Bangsa 2 Depok - 20 momen terbaik angkatan 2026." />
-    <title>Kenangan SMK | Galeri Foto</title>
+    <meta name="description" content="Galeri Foto Kenangan SMK Kesuma Bangsa 2 Depok - 35 momen terbaik angkatan 2026." />
+    <title>Kenangan SMK | Galeri Foto 35 Momen</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Google Fonts -->
@@ -375,7 +375,7 @@
         font-size: 0.75rem;
       }
 
-      /* Responsive: tablet 2-3 kolom, mobile 2 kolom */
+      /* Responsive: tablet 3 kolom, mobile 2 kolom */
       @media (max-width: 992px) {
         .gallery-grid {
           grid-template-columns: repeat(3, 1fr);
@@ -474,7 +474,7 @@
     <main class="main-content">
       <div class="hero">
         <h2><i class="fas fa-camera"></i> Galeri Kenangan</h2>
-        <p>20 momen terindah selama di SMK Kesuma Bangsa 2 Depok.</p>
+        <p>35 momen terindah selama di SMK Kesuma Bangsa 2 Depok.</p>
       </div>
 
       <div class="gallery-grid" id="galleryGrid"></div>
@@ -572,13 +572,13 @@
       document.querySelectorAll('.sidebar-nav a').forEach((anchor) => anchor.addEventListener('click', closeSidebar));
       window.addEventListener('DOMContentLoaded', setActiveNav);
 
-      // ----- Generate 20 foto (foto1.jpeg - foto20.jpeg) dengan placeholder fallback -----
+      // ----- Generate 35 foto (foto1.jpeg - foto35.jpeg) dengan placeholder fallback -----
       const galleryGrid = document.getElementById('galleryGrid');
       const lightbox = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightboxImg');
       const closeLightboxBtn = document.getElementById('closeLightboxBtn');
 
-      const totalPhotos = 20;
+      const totalPhotos = 35; // TOTAL DIPERBARUI MENJADI 35 FOTO
       const captions = [
         'Momen kelulusan SMK',
         'Foto angkatan 26 12 RPL',
@@ -600,6 +600,22 @@
         'Bukber penuh cerita tawa',
         'Sahabat beda jurusan',
         'Salam perpisahan 2026',
+        // foto21 hingga foto35 (tambahan 15 caption)
+        'Study tour ke Bali bersama angkatan',
+        'Praktik kerja lapangan seru',
+        'Lomba IT kompetisi daerah',
+        'Wisuda penuh haru',
+        'Jalan sehat sejuta senyum',
+        'Pentas seni malam puncak',
+        'Fotbar jurusan TKJ & RPL',
+        'Outbond kebersamaan di Lembang',
+        'Kunjungan industri ke Bandung',
+        'Kegiatan P5K penuh makna',
+        'Upacara bendera terakhir angkatan',
+        'Ngabuburit di halaman sekolah',
+        'Makan bersama setelah ujian',
+        'Farewell party 2026 meriah',
+        'Haru tangis perpisahan guru dan siswa'
       ];
 
       for (let i = 1; i <= totalPhotos; i++) {
@@ -616,7 +632,7 @@
         img.src = fileName;
         img.alt = `Kenangan SMK ${i}`;
         img.loading = 'lazy';
-        // Jika gambar gagal dimuat, tampilkan placeholder
+        // Jika gambar gagal dimuat, tampilkan placeholder yang informatif
         img.onerror = function () {
           if (!this.src.includes('placehold.co')) {
             this.src = `https://placehold.co/600x600/fbe9d2/a5673a?text=Kenangan+${i}&font=poppins`;
